@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CDN-List</title>
+    <style type="text/css">
+        /*
+         * from: https://css-tricks.com/almanac/properties/u/user-select/
+         */
+        code {  
+            -webkit-user-select: all;  /* Chrome 49+ */
+            -moz-user-select: all;     /* Firefox 43+ */
+            -ms-user-select: all;      /* No support yet */
+            user-select: all;          /* Likely future */   
+        }
+        .no-data-tip {
+            color: #ababab;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h3>CDN-Resource-List</h3>
+    <hr />
+    {% if file_list %}
+    <ul>
+        {% for item in file_list %}
+        <li>
+            <code>{{ url_base }}{{ url_for('static', filename=item) }}</code>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <div class="no-data-tip">No Data</div>
+    {% endif %}
+</body>
+</html>
